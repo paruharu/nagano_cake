@@ -1,0 +1,61 @@
+<br>
+<main>
+  <div class="container", align="center">
+   <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-3 px-5 px-sm-12">
+
+      <div class="p-1 mb-1 bg-warning text-dark"><h5>ログイン</h5></div><br />
+    </div>
+   </div>
+
+    <div class="row">
+     <div class="col-sm-6 col-md-8 col-lg-4 px-5 px-sm-12">
+       <div class="p-1 mb-1 bg-dark text-white"><h6>会員の方はこちらからログイン</h6></div>
+     </div>
+    </div>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+       <div class="row">
+       <div class="col-sm-6 col-md-8 col-lg-10 px-5 px-sm-0">
+        <table style="border:none;" width="500">
+           <tr>
+            <div class="field">
+             <th><%= f.label :email, "メールアドレス" %></th>
+             <th><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
+            </div>
+           </tr>
+
+           <tr>
+            <div class="field">
+             <th><%= f.label :password, "パスワード" %></th>
+             <th><%= f.password_field :password, autocomplete: "current-password" %></th>
+            </div>
+           </tr>
+
+           <tr>
+            <div class="actions">
+             <th></th>
+             <th><br><%= f.submit "ログイン", class: 'btn btn-sm btn-primary' %></th></br >
+            </div>
+           </tr>
+
+        </table>
+
+        <div class="row">
+         <div class="col-sm-6 col-md-8 col-lg-4 px-5 px-sm-12">
+          <br><div class="p-1 mb-1 bg-dark text-white"><h6>会員登録がお済みではない方</h6></div>
+         </div>
+        </div>
+
+          <tr>
+            <div>
+             <th></th>
+             <% end %>
+             <th><%= render "customers/shared/links" %></th>
+            </div>
+          </tr>
+
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :customers, controllers: {
+    sessions:      'customers/sessions',
+    passwords:     'customers/passwords',
+    registrations: 'customers/registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  
+
   namespace :admin do
     resources :items
     resources :genres
@@ -11,7 +19,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
     root to: 'homes#top'
-    
+
   end
 
   scope module: :public do
@@ -24,5 +32,5 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
   end
 
-  
+
 end
