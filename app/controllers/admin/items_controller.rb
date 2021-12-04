@@ -11,9 +11,11 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(book_params)
     @item.save
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -23,7 +25,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def genre_params
-    params.require(:item).permit(:name, :)
+    params.require(:item).permit(:name, :image_id, :introduction, :price, :is_active)
   end
 
 end
