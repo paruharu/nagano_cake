@@ -2,7 +2,7 @@
 <main>
   <div class="container", align="center">
    <div class="row">
-    <div class="col-md-2">
+    <div class="col-log-2">
 
       <% if @item.errors.any? %>
       <%= @item.errors.count %>エラーが発生しました:
@@ -11,60 +11,49 @@
       <% end %>
       <% end %>
 
-     <div><h4>商品新規登録</h4></div></br >
+     <div><h4>商品新規登録</h4></div>
     </div>
    </div>
 
+  <div class="row">
    <%= form_with model:@item, url:admin_items_path, local:true do |f| %>
-  　<div class="row">
-      <div class="col-md-6">
+
+      <div class="col-log-6">
         <table style="border:none">
-         <thread>
+         <thead>
           <tr>
             <th><h6>商品画像</h6></th>
-            <div class="form-field">
-             <th><%= f.attachment_field :image, class:"form-control-file image", placeholder:"商品画像" %></th>
-            </div>
-          </tr>
 
+             <th><%= f.attachment_field :image, class:"form-control-file image", placeholder:"商品画像" %></th>
+          </tr>
           <tr>
             <th><h6>商品名</h6></th>
-              <div class="form-field">
                 <th><%= f.text_field :name %></th>
-              </div>
           </tr>
-
           <tr>
             <th><h6>商品説明</h6></th>
-             <div class="form-field">
               <th><%= f.text_area :introduction %></th>
-             </div>
           </tr>
 
           <tr>
             <th><h6>ジャンル</h6></th>
-            　<div class="form-field">
             　<th><%= f.collection_select :genre_id, @genres, :id, :name, { include_blank: '-選択してください-' }, { class: 'form-control' , required: true } %></th>
-            　</div>
           </tr>
 
           <tr>
            <th><h6>税抜価格</h6></th>
-            <div class="form-field">
             <th><%= f.text_field :price %></th>
           </tr>
 
           <tr>
             <th><h6>販売ステータス</h6></th>
-            　<div class="form-field">
-            　<th><%= f.select :is_active, {'販売中': 1, '販売停止中': 2}, { include_blank: '-選択してください-' }, { class: 'form-control' , required: true } %></th>
-            　</div>
+            <th><%= f.select :is_active, {'販売中': 1, '販売停止中': 2}, { include_blank: '-選択してください-' }, { class: 'form-control' , required: true } %></th>
           </tr>
 
-         </thread>
+         </thead>
         </table>
       </div>
-     </div>
+
 
     <div class="row", align="center">
      <div class="col-md-8" >
@@ -72,6 +61,7 @@
      </div>
     </div>
   <% end %>
+   </div>
 
   </div>
 </main>

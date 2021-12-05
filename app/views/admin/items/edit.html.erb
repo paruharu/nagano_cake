@@ -15,42 +15,52 @@
     </div>
    </div>
 
-    <%= form_with model:@item, url:"/items/#{@item.id}", local:true do |f| %>
-     <div class="form-group">
-      <label for="tem_image">商品画像</label>
-    　<%= f.attachment_field :image, class:"form-control item_image" %>
-     </div>
+   <div class="col-log-6">
+    <table style="border:none">
+     <thead>
 
-     <div class="form-group">
-      <label for="item_name">商品名</label>
-      <%= f.text_field :name, class:"form-control item_name" %>
-     </div>
+      <tr>
+   　　 <%= form_with model:@item, url:"/items/#{@item.id}", local:true do |f| %>
+       <th><h6>商品画像</h6></th>
+     　<th><%= f.attachment_field :image, class:"form-control-file image", placeholder:"商品画像" %></th>
+     　</tr>
 
-     <div class="form-group">
-      <label for="item_introduction">商品名</label>
-      <%= f.text_area :introduction, class:"form-control item_introduction" %>
-     </div>
+     　 <tr>
+       <th><h6>商品名</h6></th>
+       <th><%= f.text_field :name, class:"form-control item_name" %></th>
+       </tr>
 
-     <div class="form-group">
-      <label for="item_genre">ジャンル</label>
-      <%= f.text_area :genre, class:"form-control item_genre" %>
-     </div>
+       <tr>
+       <th><h6>商品名</h6></th>
+       <th><%= f.text_field :introduction, class:"form-control item_introduction" %></th>
+       </tr>
 
-     <div class="form-group">
-      <label for="item_price">税込価格</label>
-      <%= f.text_area :price, class:"form-control item_price" %>
-     </div>
+       <tr>
+       <th><h6>ジャンル</h6></th>
+       <th><%= f.collection_select :genre_id, @genres, :id, :name, { include_blank: '-選択してください-' }, { class: 'form-control' , required: true } %></th>
+       </tr>
 
-     <div class="form-group">
-      <label for="item_is_active">税込価格</label>
-      <%= f.text_area :is_active, class:"form-control item_is_active" %>
-     </div>
+       <tr>
+       <th><h6>税込価格</h6></th>
+       <th><%= f.text_field :price, class:"form-control item_price" %></th>
+       </tr>
 
-     <div class="form-group">
-    　<%= f.submit '編集', class:"btn btn-sm btn-primary" %>
-     </div>
+       <tr>
+       <th><h6>販売ステータス</h6></th>
+       <th><%= f.select :is_active, {'販売中': 1, '販売停止中': 2}, { include_blank: '-選択してください-' }, { class: 'form-control' , required: true } %></th>
+       </tr>
+
+     </thead>
+    </table>
+   </div>
+
+   <div class="row" >
+    <div class="col-md-12", class="text-center" >
+   　<br><%= f.submit '変更を保存', class:"btn btn-sm btn-primary" %>
+    </div>
+   </div>
+
     <% end %>
-
 
   </div>
 </main>

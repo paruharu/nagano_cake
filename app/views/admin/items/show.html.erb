@@ -3,48 +3,62 @@
   <div class="container", align="center">
    <div class="row">
     <div class="col-md-2">
-     <div><h4>商品新規登録</h4></div></br >
+     <div><h4>商品詳細</h4></div></br >
     </div>
    </div>
 
    <div class="row">
     <div class="col-md-4">
-     <%=attachment_field_image_tag @item, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+     <%=attachment_image_tag @item, :image, size: '240x180', fallback: "no_image.jpg" %>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-3">
       <table style="border:none">
-        <thred>
+        <thead>
           <tr>
             <th>商品名</th>
-　　　　　　<div><%= @item.name %></div>
+            <td><%= @item.name %></td>
           </tr>
 
           <tr>
             <th>商品説明</th>
-            <div><%= @item.introduction %></div>
+            <td><%= @item.introduction %></td>
           </tr>
 
           <tr>
             <th>ジャンル</th>
-            <div><%= @item.genre %></div>
+            <td><%= @item.genre.name %></td>
           </tr>
 
           <tr>
             <th>税込価格<br>(税抜価格)</th>
-            <div><%= @item.genre %></div>
+            <td><%= @item.price %></td>
           </tr>
 
           <tr>
             <th>販売ステータス</th>
-            <div><%= @item.is_active %></div>
+            <td>
+              <% if @item.is_active %>
+               販売中
+              <% else %>
+               販売停止中
+              <% end %>
+            </td>
           </tr>
-        </thred>
+
+          <tr>
+            <th> </th>
+            <th> </th>
+          </tr>
+
+          <tr>
+            <th></th>
+            <th><%= link_to "編集する", edit_admin_item_path(@item.id) , class:"btn btn-sm btn-success" %></th>
+          </tr>
+        </thead>
       </table>
     </div>
    </div>
 
-   <div class="row">
-     <%= link_to "編集する", edit_item_path(@item) , class:"btn btn-sm btn-success" %>
   </div>
 </main>

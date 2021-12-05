@@ -18,7 +18,7 @@
    <div class="row">
      <div class="col-md-12">
        <table class="table">
-         <tread>
+         <thead>
            <tr>
              <th>商品ID</th>
              <th>商品名</th>
@@ -26,26 +26,28 @@
              <th>ジャンル</th>
              <th>ステータス</th>
            </tr>
-         </tread>
+         </thead>
          <tbody>
+          <% @items.each do |item| %>
            <tr>
              <td width="100">
                商品ID
              </td>
              <td width="220">
-               商品名
+               <%= item.name %>
              </td>
              <td width="120">
-               税抜価格
+               <%= item.price %>
              </td>
              <td width="150">
-               ジャンル
+               <%= item.genre %>
              </td>
              <td width="130">
-               ステータス
+               <%= item.is_active %>
              </td>
            </tr>
          </tbody>
+         <% end %>
        </table>
 
 
@@ -53,9 +55,9 @@
      <p>1</p>
      <p>2</p>
      <p>3</p>
-     <p>></p>
-     <p>>></p>
-   </div>
+     <p>Next></p>
+     <p>Last>></p>
+    </div>
 
   </div>
 </main>
