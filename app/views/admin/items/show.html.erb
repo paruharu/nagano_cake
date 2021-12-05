@@ -1,0 +1,50 @@
+<br>
+<main>
+  <div class="container", align="center">
+   <div class="row">
+    <div class="col-md-2">
+     <div><h4>商品新規登録</h4></div></br >
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="col-md-4">
+     <%=attachment_field_image_tag @item, :image, :fill, 60, 60, fallback: "no_image.jpg" %>
+    </div>
+
+    <div class="col-md-8">
+      <table style="border:none">
+        <thred>
+          <tr>
+            <th>商品名</th>
+　　　　　　<div><%= @item.name %></div>
+          </tr>
+
+          <tr>
+            <th>商品説明</th>
+            <div><%= @item.introduction %></div>
+          </tr>
+
+          <tr>
+            <th>ジャンル</th>
+            <div><%= @item.genre %></div>
+          </tr>
+
+          <tr>
+            <th>税込価格<br>(税抜価格)</th>
+            <div><%= @item.genre %></div>
+          </tr>
+
+          <tr>
+            <th>販売ステータス</th>
+            <div><%= @item.is_active %></div>
+          </tr>
+        </thred>
+      </table>
+    </div>
+   </div>
+
+   <div class="row">
+     <%= link_to "編集する", edit_item_path(@item) , class:"btn btn-sm btn-success" %>
+  </div>
+</main>
