@@ -20,7 +20,7 @@
      <thead>
 
       <tr>
-   　　 <%= form_with model:@item, url:"/items/#{@item.id}", local:true do |f| %>
+   　　 <%= form_with model:@item, url:admin_item_path(@item.id), local:true do |f| %>
        <th><h6>商品画像</h6></th>
      　<th><%= f.attachment_field :image, class:"form-control-file image", placeholder:"商品画像" %></th>
      　</tr>
@@ -31,8 +31,8 @@
        </tr>
 
        <tr>
-       <th><h6>商品名</h6></th>
-       <th><%= f.text_field :introduction, class:"form-control item_introduction" %></th>
+       <th><h6>商品説明</h6></th>
+       <th><%= f.text_area :introduction, class:"form-control item_introduction" %></th>
        </tr>
 
        <tr>

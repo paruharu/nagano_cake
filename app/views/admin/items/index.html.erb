@@ -2,21 +2,20 @@
 <main>
   <div class="container", align="center">
    <div class="row">
-    <div class="col-md-2">
+    <div class="col-lg-2">
 
      <div><h4>商品一覧</h4></div></br >
     </div>
    </div>
 
-   <!--右寄せにならない-->
    <div class="row">
-    <div class="col-lg-12">
-     <tr class="text-right">＋追加</tr><br>
+    <div class="col-lg-10">
+     <tr><%= link_to "追加", new_admin_item_path, class:"navbar-brand" %></tr><br>
     </div>
    </div>
 
    <div class="row">
-     <div class="col-md-12">
+     <div class="col-lg-10">
        <table class="table">
          <thead>
            <tr>
@@ -31,32 +30,41 @@
           <% @items.each do |item| %>
            <tr>
              <td width="100">
-               商品ID
+               <%= item.id %>
              </td>
              <td width="220">
-               <%= item.name %>
+               <%= link_to admin_item_path(item.id) do %><%= item.name %><% end %>
              </td>
              <td width="120">
                <%= item.price %>
              </td>
              <td width="150">
-               <%= item.genre %>
+               <%= item.genre.name %>
              </td>
              <td width="130">
-               <%= item.is_active %>
+              <% if item.is_active %>
+               販売中
+              <% else %>
+               販売停止中
+              <% end %>
              </td>
            </tr>
          </tbody>
          <% end %>
        </table>
+      </div>
+     </div>
 
-
-    <div class="pagination">
-     <p>1</p>
-     <p>2</p>
-     <p>3</p>
-     <p>Next></p>
-     <p>Last>></p>
+   <div class="row" >
+     <div class="col-lg-7">
+      <div class="pagination">
+       <p style='margin: 10px'>1</p>
+       <p style='margin: 10px'>2</p>
+       <p style='margin: 10px'>3</p>
+       <p style='margin: 10px'>Next></p>
+       <p style='margin: 10px'>Last>></p>
+      </div>
+     </div>
     </div>
 
   </div>
