@@ -109,15 +109,13 @@
         <br>
         <tr>
           <th></th>
-          <th><%= f.submit "編集内容を保存" %></th>
-          <th><%= button_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></th>
+          <th><%= f.submit "編集内容を保存", class:"btn btn-sm btn-primary" %></th>
+          <% end %>
+          <th><%= link_to "退会する", customers_unsubscribe_path, class:"btn btn-sm btn-primary" %></th>
           <th><%= link_to "戻る", :back %></th>
         </tr>
 
       </table>
-    <% end %>
-
-
 
  </div>
 </main>

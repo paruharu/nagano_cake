@@ -30,26 +30,10 @@
             <li>
              <%= link_to "ログアウト", destroy_admin_session_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px', method: :delete %>
             </li>
-    <% else %>
-            <li>
-              <%= link_to "About", about_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
-            </li>
-            <li>
-              <%= link_to "商品一覧", admin_items_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
-            </li>
-            <li>
-              <%= link_to "新規登録", new_admin_registration_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
-            </li>
-            <li>
-              <%= link_to "ログイン", new_admin_session_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
-            </li>
-    <% end %>
 
-
-
-      <% if customer_signed_in? %>
+      <% elsif customer_signed_in? %>
             <li>
-              <%= link_to "マイページ", about_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
+              <%= link_to "マイページ", customers_my_page_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
             </li>
             <li>
               <%= link_to "商品一覧", items_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
@@ -58,11 +42,11 @@
               <%= link_to "カート", new_admin_registration_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
             </li>
             <li>
-              <%= link_to "ログアウト", destroy_customer_session_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
+              <%= link_to "ログアウト", destroy_customer_session_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px', method: :delete %>
             </li>
 
-        <% else %>
-            <li>
+     <% else %>
+          <li>
               <%= link_to "About", about_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
             </li>
             <li>
@@ -74,6 +58,7 @@
             <li>
               <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default btn-lg btn-block', class: 'btn btn-outline-info', style: 'margin: 15px' %>
             </li>
+
 
     <% end %>
 

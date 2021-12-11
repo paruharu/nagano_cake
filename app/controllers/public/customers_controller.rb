@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
@@ -10,6 +10,14 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
+
+    if @customer.update(customer_params)
+       flash[:notice] = "更新できました。"
+       redirect_to customer_path(@customer.id)
+    else
+       render :edit
+    end
+
   end
 
   def unsubscribe
