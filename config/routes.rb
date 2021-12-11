@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :addresses
     root to: 'homes#top'
     get "/about" => "homes#about"
+    get "/customers/my_page" => "customers#show"
   end
 
 
