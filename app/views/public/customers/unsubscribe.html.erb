@@ -18,7 +18,7 @@
      </span>
 
      <span class="button">
-     <%= link_to "退会する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-sm btn-primary" %>
+     <%= link_to "退会する", customers_withdraw_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class:"btn btn-sm btn-primary" %>
      </span>
 
   </div>

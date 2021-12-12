@@ -17,8 +17,8 @@
 
        <div class="row">
         <div class="col-lg-8">
+          <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
           <table style="border:none", width="400" >
-           <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
             <thead>
              <tr>
               <div class="field">
@@ -40,9 +40,10 @@
                <th><br><%= f.submit "ログイン", class: 'btn btn-sm btn-primary' %></th></br >
               </div>
              </tr>
-            <% end %>
             </thead>
           </table>
+          <% end %>
+
          </div>
         </div>
 
