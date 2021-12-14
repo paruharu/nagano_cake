@@ -24,9 +24,10 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :customers
+    resource :customers, except: [:show]
     resources :items, only: [:index, :show]
     resources :cart_items
+    get "/orders/complete"  => "orders#complete"
     resources :orders
     resources :addresses
     root to: 'homes#top'

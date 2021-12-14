@@ -27,7 +27,7 @@ class Customers::SessionsController < Devise::SessionsController
 
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
   # def reject_user
-  #   @customer = Customer.find_by(name: params[:customer][:name])
+  #   @customer = Customer.find_by(email: params[:customer][:email])
   #   if @customer
   #     if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
   #       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"

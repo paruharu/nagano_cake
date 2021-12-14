@@ -13,7 +13,7 @@
     <!--<= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>-->
     <!--  <= render "customers/shared/error_messages", resource: resource %>-->
 
-    <%= form_with model:@customer, local:true do |f| %>
+    <%= form_with model:@customer, url:edit_customers_path, local:true do |f| %>
 
     　<table style="border:none;" >
     　  <thead>
