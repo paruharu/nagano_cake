@@ -3,11 +3,67 @@
   <div class="container", align="center">
    <div class="row">
     <div class="col-md-2">
-
      <div><h4>会員情報編集</h4></div></br >
     </div>
    </div>
 
+   <div class="row">
+    <div class="col-6">
+
+    <%= form_with model:@customer, url:admin_customer_path(@customer.id), local:true do |f| %>
+    <table style="border:none;">
+     <tr>
+      <th width="180">会員ID</th>
+      <td><%= @customer.id %></td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <th>氏名</th>
+      <td><%= f.text_field :last_name, class:"form-control customer_last_name" %></td>
+      <td><div><%= f.text_field :first_name, class:"form-control customer_first_name" %></div></td>
+     </tr>
+
+     <tr>
+      <th>フリガナ</th>
+      <td><%= f.text_field :last_name_kana, class:"form-control customer_last_name_kana" %></td>
+      <td><%= f.text_field :first_name_kana, class:"form-control customer_first_name_kana" %></td>
+     </tr>
+
+     <tr>
+      <th>郵便番号</th>
+      <td><%= f.text_field :postal_code, class:"form-control customer_postal_code" %></td>
+     </tr>
+
+     <tr>
+      <th>住所</th>
+      <td><%= f.text_field :address, class:"form-control customer_address" %></td>
+     </tr>
+
+     <tr>
+      <th>電話番号</th>
+      <td><%= f.text_field :telephone_number, class:"form-control customer_telephone_number" %></td>
+     </tr>
+
+     <tr>
+      <th>メールアドレス</th>
+      <td><%= f.text_field :email, class:"form-control customer_email" %></td>
+     </tr>
+
+     <tr>
+      <th>会員ステータス</th>
+      <td><%= @customer.is_active %></td>
+     </tr>
+
+     <tr>
+      <th></th>
+      <td><div  class="my-4"><%= f.submit '変更を保存', class:"btn btn-sm btn-primary" %></div></td>
+     </tr>
+    </table>
+    <% end %>
+
+   </div>
+  </div>
 
   </div>
  </main>

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resource :customers, except: [:show]
     resources :items, only: [:index, :show]
     resources :cart_items
+    get "/orders/confirm" => "orders#confirm"
     get "/orders/complete"  => "orders#complete"
     resources :orders
     resources :addresses
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     get "/customers/my_page" => "customers#show"
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
+    delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   end
 
 
