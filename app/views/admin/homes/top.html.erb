@@ -9,29 +9,30 @@
    </div>
 
    <div class="row">
-    <div class="col-md-2">
+    <div class="col-6">
       <table class="table">
-        <thead>
+        <thead class="thead-light">
           <tr>
             <th>購入日時</th>
             <th>購入者</th>
             <th>注文個数</th>
           </tr>
         </thead>
+
+        <% @orders.each do |order| %>
         <tbody>
           <tr>
-            <td>10月</td>
-            <td>A</td>
-            <td>2</td>
+            <td><%=link_to admin_root_path do %><%= order.created_at %><% end %></td>
+            <td><%= order.name %></td>
+            <td>注文個数とは？</td>
           </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
    </div>
 
-   <div class="row" >
-    <div class="col-md-5", class="text-center" >
-
+   <div class="row text-center">
       <div class="pagination">
        <p style='margin: 10px'>1</p>
        <p style='margin: 10px'>2</p>
@@ -39,10 +40,7 @@
        <p style='margin: 10px'>Next></p>
        <p style='margin: 10px'>Last>></p>
       </div>
-
-    </div>
    </div>
-
 
   </div>
 </main>

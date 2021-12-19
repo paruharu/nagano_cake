@@ -6,50 +6,62 @@
         <h4>ショッピングカート</h4>
       </div>
       <div class="col-9">
-        <div class="mx-3"><%=link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "btn btn-sm btn-primary" %></div>
+        <div class="mx-3"><%=link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "btn btn-sm btn-primary" %>
+        <%=link_to "買い物を続ける", items_path, class: "btn btn-sm btn-primary" %>
+        </div>
       </div>
    </div>
+   <br>
 
-   <% @cart_items.each do |cart_item| %>
    <table border="1">
-     <thead>
+     <thead class="thead-light">
        <tr>
-         <th>商品名</th>
+         <th>商品名</div></th>
          <th>単価(税込)</th>
          <th>数量</th>
          <th>小計</th>
-         <th></th>
+         <th></div></th>
        </tr>
+     </thead>
 
+       <% @cart_items.each do |cart_item| %>
        <tbody>
          <tr>
            <th>
-             <%= cart_item.item %>
+            <div class="mx-3">
+             <%= cart_item.item.name %>
+            </div>
            </th>
-           <th><%= cart_item.item.price.add_tax_sales_price.to_s(:dalimited) %></th>
-           <th><%= cart_item.amount %></th>
-           <th><%= cart_item.item %></th>
-           <th><div class="mx-3"><%=link_to "削除する", cart_items_path, class: "btn btn-sm btn-primary" %></div></th>
+           <th><%= cart_item.item.price %></th>
+           <th>
+            <div class="mx-3">
+             <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+             <%= f.select :amount, *[1..5] %>
+             <%= f.submit '変更'%>
+             <% end %>
+            </div>
+           </th>
+           <th><div class="mx-3"><%= cart_item.item.with_tax_price%>円</div></th>
+           <th><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete, data: {confirm: '削除してよいですか？'}, class: "btn btn-sm btn-primary" %></th>
          </tr>
        </tbody>
-     </thead>
+       <% end %>
    </table>
-   <% end %>
+   <br>
 
    <div class="row">
-    <div class="col-4, m-4">
-     <%=link_to "買い物を続ける", items_path, class: "btn btn-sm btn-primary" %>
-    </div>
-    <div class="col-4, my-4">
+    <div class="col-9">
        <table border="1">
          <th><div class="mx-3">合計金額</div></th>
-         <th><div class="mx-3">1,000</div></th>
+         <!--<th><div class="mx-3"><= cart_item.subtotal %></div></th>-->
+         <!--< @合計金額 +=  cart_item.subtotal %>-->
+
        </table>
     </div>
    </div>
-
-   <div class="row text-center">
-    <div class="col">
+    <br>
+   <div class="row">
+    <div class="col-9">
       <%=link_to "情報入力に進む", new_order_path, class: "btn btn-sm btn-primary btn-lg" %>
     </div>
    </div>

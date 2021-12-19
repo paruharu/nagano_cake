@@ -8,9 +8,9 @@
     </div>
 
       <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+        <div class="col-3">
           <table style="border:none;" width="400">
-            <thread>
+            <thead>
              <tr>
                <th><h6>ジャンル名</h6></th>
 
@@ -22,32 +22,37 @@
                <th><%= f.submit '新規登録', class: "btn btn-sm btn-primary" %></th>
                <% end %>
              </tr>
-            </thread>
+            </thead>
           </table>
         </div>
       </div>
     <br>
-    <table class="table table-hover table-inverse">
-      <thead>
-         <tr>
-           <th>ジャンル</th>
-           <th></th>
-         </tr>
-       </thead>
 
-         <tbody>
-          <% @genres.each do |genre| %>
-           <tr>
-             <td>
-               <span><%= genre.name %></span>
-             </td>
-             <td>
-               <span><%=link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-primary" %></span>
-             </td>
-           </tr>
-　　　　　<% end %>
-         </tbody>
-    </table>
+      <div class="row">
+        <div class="col-4">
+          <table class="table table-hover">
+            <thead class="thead-light">
+               <tr>
+                 <th>ジャンル</th>
+                 <th></th>
+               </tr>
+             </thead>
+
+               <tbody>
+                <% @genres.each do |genre| %>
+                 <tr>
+                   <td>
+                     <span><%= genre.name %></span>
+                   </td>
+                   <td>
+                     <span><%=link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-primary" %></span>
+                   </td>
+                 </tr>
+      　　　　　<% end %>
+               </tbody>
+          </table>
+        </div>
+      </div>
 
   </div>
  </main>

@@ -3,6 +3,14 @@
   <div class="container", align="center">
    <div class="row">
     <div class="col-md-2">
+
+     <% if @user.errors.any? %>
+     <%= @user.errors.count %>error prohibited this obj from being saved:
+     <% @user.errors.full_messages.each do |message| %>
+     <%= message %>
+     <% end %>
+     <% end %>
+
      <div><h4>商品詳細</h4></div></br >
     </div>
    </div>
