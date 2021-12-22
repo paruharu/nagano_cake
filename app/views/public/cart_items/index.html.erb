@@ -23,7 +23,7 @@
          <th></div></th>
        </tr>
      </thead>
-
+       <% @subtotal = 0 %>
        <% @cart_items.each do |cart_item| %>
        <tbody>
          <tr>
@@ -32,17 +32,20 @@
              <%= cart_item.item.name %>
             </div>
            </th>
-           <th><%= cart_item.item.price %></th>
+           <th>
+            <%= cart_item.item.with_tax_price %>円
+            <% @subtotal += cart_item.item.with_tax_price %>
+           </th>
            <th>
             <div class="mx-3">
-             <%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+             <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local:true do |f| %>
              <%= f.select :amount, *[1..5] %>
              <%= f.submit '変更'%>
              <% end %>
             </div>
            </th>
-           <th><div class="mx-3"><%= cart_item.item.with_tax_price%>円</div></th>
-           <th><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete, data: {confirm: '削除してよいですか？'}, class: "btn btn-sm btn-primary" %></th>
+           <th><div class="mx-3"><%= cart_item.item.with_tax_price * cart_item.amount %>円</div></th>
+           <th><div class="mx-3"><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete, data: {confirm: '削除してよいですか？'}, class: "btn btn-sm btn-primary" %></div></th>
          </tr>
        </tbody>
        <% end %>
@@ -53,8 +56,7 @@
     <div class="col-9">
        <table border="1">
          <th><div class="mx-3">合計金額</div></th>
-         <!--<th><div class="mx-3"><= cart_item.subtotal %></div></th>-->
-         <!--< @合計金額 +=  cart_item.subtotal %>-->
+         <th><div class="mx-3"><%= @subtotal %>円</div></th>
 
        </table>
     </div>

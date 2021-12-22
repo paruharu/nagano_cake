@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
      @cart_item = CartItem.find(params[:id])
      @cart_item.update(cart_item_params)
      flash[:notice] = "変更しました"
-     redirect_to cart_itmes_path
+     redirect_to cart_items_path
   end
 
   def destroy
@@ -26,6 +26,8 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
+    @cart_item.save!
+    flash[:notice] = "カートに追加しました。"
     redirect_to cart_items_path
   end
 

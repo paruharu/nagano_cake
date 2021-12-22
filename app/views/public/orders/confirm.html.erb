@@ -6,6 +6,7 @@
         <h4>注文情報確認</h4>
       </div>
    </div>
+   <br>
 
   <table border="1">
      <thead>
@@ -15,28 +16,44 @@
          <th>数量</th>
          <th>小計</th>
        </tr>
+     </thead>
 
+       <% @subtotal = 0 %>
+       <% @cart_items.each do |cart_item| %>
        <tbody>
          <tr>
            <th>
+            <div class="mx-3">
+             <%= cart_item.item.name %>
+            </div>
            </th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
+           <th>
+            <%= cart_item.item.with_tax_price %>円
+           </th>
+           <th>
+            <div class="mx-3">
+             <%= cart_item.amount %>
+            </div>
+           </th>
+           <th>
+
+            <% @subtotal += cart_item.item.with_tax_price %>
+           </th>
+
+        <% end %>
        </tbody>
      </thead>
    </table>
-
+   <br>
    <table border="1">
      <tr>
        <th>送料</th>
-       <td></td>
+       <td><%= @order.shipping_cost %></td>
      </tr>
 
      <tr>
        <th>商品合計</th>
-       <td></td>
+       <td><%= @subtotal %></td>
      </tr>
 
      <tr>
@@ -47,15 +64,24 @@
 
 　 <div class="row">
       <div class="col-4">
-        <h5>支払方法</h5>
-        クレジットカード
+        <div class="d-flex">
+            <h5 class="mr-3"><strong>支払方法</strong></h5>
+            <%= @order.payment_method_i18n %>
+    　　</div>
       </div>
    </div>
 
 　 <div class="row">
       <div class="col-4">
-        <h5>お届け先</h5>
-        東京
+         <div class="d-flex">
+           <div><h5 class="mr-3"><strong>お届け先</strong></h5></div>
+               <div>
+               〒<%= @order.postal_code %>
+               <%= @order.address %>
+               <br>
+               <%= @order.name %>
+           </div>
+         </div>
       </div>
    </div>
 
