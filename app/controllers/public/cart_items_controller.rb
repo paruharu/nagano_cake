@@ -5,8 +5,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-     @cart_item = CartItem.find(params[:id])
-     @cart_item.update(cart_item_params)
+     @cart_item = CartItem.find(params[:amount])
+     @cart_item.update(amount: params[:amount].to_i)
      flash[:notice] = "変更しました"
      redirect_to cart_items_path
   end
@@ -26,7 +26,7 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_item.save!
+    @cart_item.save
     flash[:notice] = "カートに追加しました。"
     redirect_to cart_items_path
   end

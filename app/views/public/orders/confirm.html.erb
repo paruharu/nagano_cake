@@ -29,6 +29,7 @@
            </th>
            <th>
             <%= cart_item.item.with_tax_price %>円
+
            </th>
            <th>
             <div class="mx-3">
@@ -36,8 +37,8 @@
             </div>
            </th>
            <th>
-
-            <% @subtotal += cart_item.item.with_tax_price %>
+            <%= cart_item.item.with_tax_price * cart_item.amount %>円
+            <% @subtotal += cart_item.item.with_tax_price * cart_item.amount %>
            </th>
 
         <% end %>
@@ -87,7 +88,7 @@
 
    <div class="row text-center">
     <div class="col">
-      <%=link_to "注文を確定する", orders_complete_path, class: "btn btn-sm btn-primary btn-lg" %>
+      <%=link_to "注文を確定する", orders_path, method: :post, class: "btn btn-sm btn-primary btn-lg" %>
     </div>
    </div>
 

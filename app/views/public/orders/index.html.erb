@@ -19,14 +19,22 @@
          </tr>
 
          <tbody>
+         <% @orders.each do |order| %>
            <tr>
+             <th><%= order.created_at%></th>
+             <th>
+               <%= order.postal_code%>
+               <%= order.address%>
+               <%= order.name%>
+             </th>
+             <th>
+
+             </th>
              <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th></th>
-             <th><div class="mx-3"><%=link_to "表示する", orders_complete_path, class: "btn btn-sm btn-primary" %></div></th>
+             <th><%= order.status %></th>
+             <th><div class="mx-3"><%=link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></div></th>
            </tr>
+         <% end %>
          </tbody>
        </thead>
      </table>

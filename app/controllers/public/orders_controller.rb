@@ -30,11 +30,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-    
+
   end
 
   def create
-    
+    @order = Order.find(params[:id])
+    @order.save
+    redirect_to orders_complete_path
   end
 
   def index

@@ -34,7 +34,6 @@
            </th>
            <th>
             <%= cart_item.item.with_tax_price %>円
-            <% @subtotal += cart_item.item.with_tax_price %>
            </th>
            <th>
             <div class="mx-3">
@@ -44,7 +43,7 @@
              <% end %>
             </div>
            </th>
-           <th><div class="mx-3"><%= cart_item.item.with_tax_price * cart_item.amount %>円</div></th>
+           <th><div class="mx-3"><%= cart_item.item.with_tax_price * cart_item.amount %>円<% @subtotal += cart_item.item.with_tax_price * cart_item.amount %></div></th>
            <th><div class="mx-3"><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete, data: {confirm: '削除してよいですか？'}, class: "btn btn-sm btn-primary" %></div></th>
          </tr>
        </tbody>
