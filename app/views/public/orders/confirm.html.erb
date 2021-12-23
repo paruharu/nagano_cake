@@ -59,7 +59,7 @@
 
      <tr>
        <th>請求金額</th>
-       <td></td>
+       <td><%= @order.shipping_cost + @subtotal %></td>
      </tr>
    </table>
 
@@ -68,6 +68,7 @@
         <div class="d-flex">
             <h5 class="mr-3"><strong>支払方法</strong></h5>
             <%= @order.payment_method_i18n %>
+
     　　</div>
       </div>
    </div>
@@ -88,7 +89,13 @@
 
    <div class="row text-center">
     <div class="col">
-      <%=link_to "注文を確定する", orders_path, method: :post, class: "btn btn-sm btn-primary btn-lg" %>
+      <%= form_with model:@order, url:orders_path, method: :post, local:true do |f| %>
+      <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= f.hidden_field :name, :value => @order.name %>
+      <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+      <%=f.submit "注文を確定する" %>
+      <% end %>
     </div>
    </div>
 
