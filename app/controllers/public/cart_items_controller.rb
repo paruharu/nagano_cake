@@ -26,12 +26,15 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    
-    if CartItem.find_by(item_id: params[:item_id]).present?
-       cart_item = CartItem.find_by(item_id: params[:item_id])
-       
+    @cart_items = current_customer.cart_items
+
+    if @cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+      @new_cart_item = @cart_items.find_by(item_id: params[:cart_item][:item_id])
+      @new_cart_item.update(amount: @new_cart_item.amount + params[:cart_item][:amount].to_i)
+      @cart_item.destroy
+      flash[:notice] = "カートに追加しました。"
     end
-    
+
     @cart_item.save
     flash[:notice] = "カートに追加しました。"
     redirect_to cart_items_path

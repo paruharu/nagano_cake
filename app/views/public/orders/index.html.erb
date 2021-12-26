@@ -3,7 +3,7 @@
   <div class="container px-5 px-sm-0">
    <div class="row">
       <div class="col-4">
-        <h4>注文情報入力</h4>
+        <h4>注文履歴一覧</h4>
       </div>
    </div>
 
@@ -19,19 +19,20 @@
          </tr>
 
          <tbody>
-         <% @orders.each do |order| %>
+         <% @order.each do |order| %>
            <tr>
-             <th><%= order.created_at%></th>
-             <th>
+             <td><div><%= order.created_at.to_s(:datetime_jp) %></div><td>
                <%= order.postal_code%>
                <%= order.address%>
                <%= order.name%>
-             </th>
-             <th>
-
-             </th>
-             <th></th>
-             <th><%= order.status %></th>
+             </td>
+             <td>
+               <% order.order_details.each do |order_detail| %>
+               <%= order_detail.item.name%>
+               <% end %>
+             </td>
+             <td></td>
+             <td><%= order.status %></td>
              <th><div class="mx-3"><%=link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></div></th>
            </tr>
          <% end %>

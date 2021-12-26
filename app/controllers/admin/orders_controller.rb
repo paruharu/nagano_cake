@@ -1,8 +1,5 @@
 class Admin::OrdersController < ApplicationController
 
- def new
- end
-
  def show
 
  end
@@ -10,9 +7,6 @@ class Admin::OrdersController < ApplicationController
  def update
  end
 
- def confirm
-  @cart_items = CartItem.all
- end
 
  private
  def order_params
