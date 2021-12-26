@@ -22,9 +22,9 @@
         <% @orders.each do |order| %>
         <tbody>
           <tr>
-            <td><%=link_to admin_root_path do %><%= order.created_at %><% end %></td>
+            <td><%=link_to admin_root_path do %><%= order.created_at.to_s(:datetime_jp) %><% end %></td>
             <td><%= order.name %></td>
-            <td>注文個数とは？</td>
+            <td><%= order.order_details.all.sum(:amount) %></td>
           </tr>
         <% end %>
         </tbody>

@@ -31,7 +31,7 @@
            </tr>
 
            <tr>
-             <td>ステータス</td>
+             <td><div class="mr-3">ステータス</div></td>
              <td>
               <% if @order.status %>
                入金待ち
@@ -54,9 +54,9 @@
          <table border="1">
 
            <tr>
-             <td>商品合計</td>
+             <td><div class="mr-3">商品合計</div></td>
              <td>
-              <%= @subtotal %>
+              <%= @order.total_payment %>
              </td>
            </tr>
 
@@ -66,8 +66,8 @@
            </tr>
 
            <tr>
-             <td>ご請求額</td>
-             <td><%= @order.total_payment %>円</td>
+             <td><div class="mr-4">ご請求額</div></td>
+             <td><%= @order.total_payment + @order.shipping_cost %>円</td>
            </tr>
 
          </table>
@@ -80,19 +80,17 @@
          <table border="1">
            <thead>
              <th>商品名</th>
-             <th>単価(税込)</th>
+             <th><div class="mr-3">単価(税込)</div></th>
              <th>個数</th>
              <th>小計</th>
            </thead>
 
-             <% @subtotal = 0 %>
              <% @order.order_details.each do |order_detail| %>
              <tbody>
              <td><%= order_detail.item.name %></td>
              <td><%= order_detail.item.with_tax_price %>円</td>
-             <td><%= order_detail.amount %></td>
-             <% @subtotal += order_detail.item.with_tax_price * order_detail.amount %>
-             <td><%= order_detail.price %>円</td>
+             <td><div class="mr-3"><%= order_detail.amount %>個</div></td>
+             <td><div class="mr-3"><%= order_detail.price %>円</div></td>
              </tbody>
              <% end %>
 
