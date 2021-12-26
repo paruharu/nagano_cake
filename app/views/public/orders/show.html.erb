@@ -1,0 +1,105 @@
+<br>
+<main>
+  <div class="container px-5 px-sm-0">
+   <div class="row">
+      <div class="col-4">
+        <h4>注文履歴詳細</h4>
+      </div>
+   </div>
+   <br>
+   <div class="row">
+     <div class="col-4">
+       <div class="mb-2"><strong>注文情報</strong></div>
+         <table border="1">
+           <tr>
+             <td>注文日</td>
+             <td><div><%= @order.created_at.to_s(:datetime_jp) %></div></td>
+           </tr>
+
+           <tr>
+             <td>配送先</td>
+             <td>
+               〒<%= @order.postal_code%><br>
+               <%= @order.address%><br>
+               <%= @order.name%>
+             </td>
+           </tr>
+
+           <tr>
+             <td>支払方法</td>
+             <td><%= @order.payment_method_i18n %></td>
+           </tr>
+
+           <tr>
+             <td>ステータス</td>
+             <td>
+              <% if @order.status %>
+               入金待ち
+              <% elsif %>
+               入金確認
+              <% elsif %>
+               製作中
+              <% elsif %>
+               発送準備中
+              <% else %>
+               発送済み
+              <% end %>
+             </td>
+           </tr>
+         </table>
+     </div>
+
+     <div class="col-8">
+       <div class="mb-2"><strong>請求情報</strong></div>
+         <table border="1">
+
+           <tr>
+             <td>商品合計</td>
+             <td>
+              <%= @subtotal %>
+             </td>
+           </tr>
+
+           <tr>
+             <td>配送料</td>
+             <td><%= @order.shipping_cost %>円</td>
+           </tr>
+
+           <tr>
+             <td>ご請求額</td>
+             <td><%= @order.total_payment %>円</td>
+           </tr>
+
+         </table>
+     </div>
+   </div>
+
+   <div class="row">
+     <div class="col-8">
+       <div class="mt-4 mb-2"><strong>注文内容</strong></div>
+         <table border="1">
+           <thead>
+             <th>商品名</th>
+             <th>単価(税込)</th>
+             <th>個数</th>
+             <th>小計</th>
+           </thead>
+
+             <% @subtotal = 0 %>
+             <% @order.order_details.each do |order_detail| %>
+             <tbody>
+             <td><%= order_detail.item.name %></td>
+             <td><%= order_detail.item.with_tax_price %>円</td>
+             <td><%= order_detail.amount %></td>
+             <% @subtotal += order_detail.item.with_tax_price * order_detail.amount %>
+             <td><%= order_detail.price %>円</td>
+             </tbody>
+             <% end %>
+
+         </table>
+     </div>
+   </div>
+
+
+  </div>
+</main>
