@@ -9,48 +9,47 @@
    </div>
 
    <div class="row">
-    <div class="col-6">
+    <div class="col-8">
      <table style="border:none">
       <thead>
         <tr>
           <th>購入者</th>
-          <td>A</td>
+          <td><%= @order.name %></td>
         </tr>
         <tr>
           <th>注文日</th>
-          <td>10月</td>
+          <td><%= @order.created_at.to_s(:datetime_jp) %></td>
         </tr>
         <tr>
           <th>支払方法</th>
-          <td>銀行振込</td>
+          <td><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <th>配送先</th>
-          <td>神奈川</td>
+          <td><%= @order.postal_code %><br><%= @order.address %></td>
         </tr>
         <tr>
-          <th>製作ステータス</th>
+         <%= form_with model:@order, locale: true do |f| %>
+          <th>注文ステータス</th>
           <td>
-           <%= form_with model:@order, locale: true do |f| %>
-           <%= f.label :status, :入金待ち %>
            <%= f.radio_button :status, 0 %>
+           <%= f.label :status, :入金待ち %>
 
-           <%= f.label :status, :入金確認 %>
            <%= f.radio_button :status, 1 %>
+           <%= f.label :status, :入金確認 %>
 
-           <%= f.label :status, :製作中 %>
            <%= f.radio_button :status, 2 %>
+           <%= f.label :status, :製作中 %>
 
-           <%= f.label :status, :発送準備中 %>
            <%= f.radio_button :status, 3 %>
+           <%= f.label :status, :発送準備中 %>
 
-           <%= f.label :status, :発送済み %>
            <%= f.radio_button :status, 4 %>
-
-           <% end %>
+           <%= f.label :status, :発送済み %>
 
           </td>
-          <td>更新</td>
+          <td><%= f.submit "更新", class: "btn btn-sm btn-primary btn-lg" %></td>
+         <% end %>
         </tr>
       </thead>
      </table>
@@ -68,11 +67,21 @@
         <th></th>
       </thead>
 
+      <% @order.order_details.each do |order_detail| %>
       <tbody>
+       <tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= order_detail.item.with_tax_price %>円</td>
+        <td><%= order_detail.amount %></td>
+        <td><%= order_detail.price %>円</td>
+        <td><%= order_detail.making_status %></td>
+       </tr>
+      </tbody>
+      <% end %>
      </table>
     </div>
 
-    <div class="col-10">
+    <div class="col-6">
      <table style="border:none">
        <thead>
          <tr>
@@ -81,7 +90,7 @@
          </tr>
          <tr>
            <th><strong>送料</strong></th>
-           <td>円</td>
+           <td><%= @order.shipping_cost %>円</td>
          </tr>
          <tr>
            <th><strong>請求金額合計</strong></th>
