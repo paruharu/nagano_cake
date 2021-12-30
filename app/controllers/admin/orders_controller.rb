@@ -7,6 +7,15 @@ class Admin::OrdersController < ApplicationController
  end
 
  def update
+  @order = Order.find(params[:id])
+  @order.order_detail
+
+   if @order.update(order_params)
+      flash[:notice] = "更新しました"
+      redirect_to admin_order_path(@order.id)
+   else
+      render :show
+   end
  end
 
 
