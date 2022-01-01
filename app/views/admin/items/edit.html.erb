@@ -1,6 +1,7 @@
 <br>
 <main>
   <div class="container", align="center">
+   <%= form_with model:@item, url:admin_item_path(@item.id), local:true do |f| %>
    <div class="row">
     <div class="col-md-2">
 
@@ -20,7 +21,7 @@
      <thead>
 
       <tr>
-   　　 <%= form_with model:@item, url:admin_item_path(@item.id), local:true do |f| %>
+
        <th><h6>商品画像</h6></th>
      　<th><%= f.attachment_field :image, class:"form-control-file image", placeholder:"商品画像" %></th>
      　</tr>

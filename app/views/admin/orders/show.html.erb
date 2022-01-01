@@ -72,20 +72,20 @@
      </table>
     </div>
 
-    <div class="col-3">
+    <div class="col-3 mt-5">
      <table style="border:none">
        <thead>
          <tr>
            <th><strong>商品合計</strong></th>
-           <td><%#= @order.order_details.item.with_tax_price * @order.order_details.amount %>円</td>
+           <td><%= @order.total_payment %>円</td>
          </tr>
          <tr>
            <th><strong>送料</strong></th>
            <td><%= @order.shipping_cost %>円</td>
          </tr>
          <tr>
-           <th><strong>請求金額合計</strong></th>
-           <td>円</td>
+           <th><div class="mr-2"><strong>請求金額合計</strong></div></th>
+           <td><%= @order.total_payment +  @order.shipping_cost %>円</td>
          </tr>
        </thead>
      </table>
