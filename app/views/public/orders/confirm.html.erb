@@ -64,7 +64,7 @@
    </table>
 
 　 <div class="row">
-      <div class="col-4">
+      <div class="col-5">
         <div class="d-flex">
             <h5 class="mr-3"><strong>支払方法</strong></h5>
             <%= @order.payment_method_i18n %>
@@ -74,7 +74,7 @@
    </div>
 
 　 <div class="row">
-      <div class="col-4">
+      <div class="col-5">
          <div class="d-flex">
            <div><h5 class="mr-3"><strong>お届け先</strong></h5></div>
                <div>
@@ -94,7 +94,7 @@
       <%= f.hidden_field :address, :value => @order.address %>
       <%= f.hidden_field :name, :value => @order.name %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-      <%=f.submit "注文を確定する" %>
+      <%=f.submit "注文を確定する", class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
    </div>
