@@ -29,13 +29,13 @@
           <td><%= @order.postal_code %><br><%= @order.address %></td>
         </tr>
         <tr>
-         <%= form_with model: @order, url:admin_order_path, method: :patch, locale: true do |f| %>
-          <th><div class="mr-3">注文ステータス</th></div>
-          <td>
-           <%= f.select :status, [["入金待ち", 0 ], ["入金確認", 1 ], ["発送準備中", 2 ], ["発送済み", 3 ]], :selected=>@order.status %>
-           <%= f.submit "更新", class: "btn btn-sm btn-primary btn-lg" %>
-          </td>
-          <% end %>
+         <!--<%#= form_with model: @order, url:admin_order_path, method: :patch, locale: true do |f| %>-->
+         <!-- <th><div class="mr-3">注文ステータス</th></div>-->
+         <!-- <td>-->
+         <!--  <%#= f.select :status, [["入金待ち", 0 ], ["入金確認", 1 ], ["発送準備中", 2 ], ["発送済み", 3 ]], :selected=>@order.status %>-->
+         <!--  <%#= f.submit "更新", class: "btn btn-sm btn-primary btn-lg" %>-->
+         <!-- </td>-->
+         <!-- <%# end %>-->
         </tr>
       </thead>
      </table>
@@ -49,7 +49,7 @@
         <th><div>単価(税込)</div></th>
         <th>数量</th>
         <th>小計</th>
-        <th>製作ステータス</th>
+        <!--<th>製作ステータス</th>-->
         <th></th>
       </thead>
 
@@ -60,11 +60,11 @@
         <td><%= order_detail.item.with_tax_price %>円</td>
         <td><%= order_detail.amount %></td>
         <td><%= order_detail.price %>円</td>
-        <td>
+        <!--<td>-->
          <%#= form_with model: @order.order_details, url:admin_order_detail, locale: true do |f| %>
          <%#= f.select :status, [["製作不可", 0 ], ["製作待ち", 1 ], ["製作中", 2 ], ["製作完了", 3 ]], :selected=>@order.order_detail.status %>
-        </td>
-        <td><%#= f.submit "更新", class: "btn btn-sm btn-primary btn-lg" %></td>
+        <!--</td>-->
+        <%#= f.submit "更新", class: "btn btn-sm btn-primary btn-lg" %>
          <%# end %>
        </tr>
       </tbody>
