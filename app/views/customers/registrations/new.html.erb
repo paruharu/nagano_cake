@@ -2,23 +2,23 @@
 <main>
   <div class="container", align="center">
    <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5">
+    <div class="col-3">
 
       <div><h4>新規会員登録</h4></div>
     </div>
-
+   <br>
    </div>
 
    <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-4 px-5 px-sm-10">
-      <table style="border:none;" width="500">
+    <div class="col-lg-9">
+      <table style="border:none;">
 
           <%= form_with model: @customer, local: true do |f| %>
             <%= render "customers/shared/error_messages", resource: resource %>
 
             <tr>
               <div class="field" >
-                <th width="300" >名前</th>
+                <th width="200">名前</th>
                 <th>
                   <%= f.label :last_name, "(姓)" %>
                　  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
@@ -54,7 +54,7 @@
 
             <tr>
               <div class="field">
-                <th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
+                <div class="mr-3"><th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th></div>
                 <th><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></th>
               </div>
             </tr>
@@ -75,12 +75,13 @@
 
             <tr>
               <div class="field">
-                <th><%= f.label :password, "パスワード" %></th>
-                <th>
+                <div class='d-flex'>
+                <th><%= f.label :password, "パスワード" %>
                   <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> 桁以上)</em>
+                  (<%= @minimum_password_length %> 桁以上)
                   <% end %>
                 </th>
+                </div>
                 <th><%= f.password_field :password, autocomplete: "new-password" %></th>
                 <th></th>
               </div>
@@ -96,7 +97,7 @@
              <tr></tr>
               <div class="actions">
                 <th></th>
-                <th><%= f.submit "新規登録", class: 'btn btn-sm btn-primary' %></th>
+                <th><div class="mt-2"><%= f.submit "新規登録", class: 'btn btn-sm btn-primary' %></div></th>
               </div>
              </tr>
 
@@ -107,15 +108,14 @@
    </div>
    <br>
    <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-4">
+    <div class="col-lg-3">
       <div><h4>既に登録済みの方</h4></div>
     </div>
    </div>
 
    <div class="row">
-     <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-10">
-      こちらからログインしてください
-      <%= render "customers/shared/links" %>
+     <div class="col-lg-4">
+       <div>こちらから<%= render "customers/shared/links" %>してください</div>
      </div>
    </div>
 
