@@ -18,10 +18,11 @@
     <div class="row">
      <div class="col-4">
        <h5>
-            <span><strong>登録情報</strong></span>
-            <span>
-       　　　　<%= link_to "編集する", edit_customers_path, class:"btn btn-sm btn-primary" %>
-            </span>
+           <div class='d-flex'>
+            <strong>登録情報</strong>
+            <div class="mr-3"></div><%= link_to "編集する", edit_customers_path, class:"btn btn-sm btn-primary" %>
+       　    </div>
+
        </h5>
      </div>
     </div>
@@ -69,10 +70,10 @@
     <div class="row">
      <div class="col-4">
        <h5>
-            <span><strong>配送先一覧</strong></span>
-            <span>
-       　　　　<%= link_to "一覧を見る", addresses_path, class:"btn btn-sm btn-primary" %>
-            </span>
+        <div class='d-flex'>
+          <strong>配送先一覧</strong>
+       　　<div class="mr-1"><%= link_to "一覧を見る", addresses_path, class:"btn btn-sm btn-primary" %></div>
+       　　</div>
        </h5>
      </div>
     </div>
@@ -80,9 +81,10 @@
     <div class="row">
      <div class="col-4">
        <h5>
-            <span><strong>注文履歴</strong></span>
-       　　　　<%= link_to "一覧を見る", orders_path, class:"btn btn-sm btn-primary" %>
-            </span>
+         <div class='d-flex'>
+          <strong>注文履歴</strong>
+       　　　<div class="mr-1"><%= link_to "一覧を見る", orders_path, class:"btn btn-sm btn-primary" %></div>
+          </div>
        </h5>
      </div>
     </div>
