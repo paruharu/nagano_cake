@@ -2,8 +2,9 @@
 <main>
   <div class="container", align="center">
    <%= form_with model:@item, url:admin_item_path(@item.id), local:true do |f| %>
+
    <div class="row">
-    <div class="col-md-2">
+    <div class="col-2">
 
       <% if @item.errors.any? %>
       <%= @item.errors.count %>エラーが発生しました:
@@ -16,7 +17,8 @@
     </div>
    </div>
 
-   <div class="col-log-6">
+   <div class="row">
+   <div class="col-6">
     <table style="border:none">
      <thead>
 
@@ -54,9 +56,10 @@
      </thead>
     </table>
    </div>
+   </div>
 
    <div class="row" >
-    <div class="col-md-12", class="text-center" >
+    <div class="col-6", class="text-center" >
    　<br><%= f.submit '変更を保存', class:"btn btn-sm btn-primary" %>
     </div>
    </div>

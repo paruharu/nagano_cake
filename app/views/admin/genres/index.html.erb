@@ -2,13 +2,13 @@
  <main>
    <div class="container", align="center">
     <div class="row">
-      <div class="col-sm-12 col-md-8 col-lg-4 px-5 px-sm-10">
-      	<h5>ジャンル一覧・追加</h5><br>
+      <div class="col-3">
+      	<h4>ジャンル一覧・追加</h4><br>
       </div>
     </div>
 
       <div class="row">
-        <div class="col-3">
+        <div class="col-6">
           <table style="border:none;" width="400">
             <thead>
              <tr>
@@ -21,16 +21,17 @@
 
                <th><%= f.submit '新規登録', class: "btn btn-sm btn-primary" %></th>
                <% end %>
+
              </tr>
             </thead>
           </table>
         </div>
       </div>
-    <br>
 
       <div class="row">
         <div class="col-4">
-          <table class="table table-hover">
+         <div class="ml-5">
+          <table class="table">
             <thead class="thead-light">
                <tr>
                  <th>ジャンル</th>
@@ -51,6 +52,7 @@
       　　　　　<% end %>
                </tbody>
           </table>
+         </div>
         </div>
       </div>
 

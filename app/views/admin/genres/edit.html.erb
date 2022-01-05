@@ -14,13 +14,12 @@
         <table style="border:none;" width="500">
          <thread>
            <tr>
-             <th><h5>ジャンル編集</h5></th><br>
+             <th><h5>ジャンル編集</h5></th>
 
              <%= form_with model:@genre, url:admin_genre_path, local:true do |f| %>
              <div class="form-group">
                <th><%= f.text_field :name %></th>
              </div>
-
              <th><%= f.submit '編集', url:admin_genres_path, class: "btn btn-sm btn-primary" %></th>
             <% end %>
 
