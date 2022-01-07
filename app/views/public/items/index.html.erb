@@ -11,7 +11,7 @@
    <div class="row">
       <div class="d-md-inline-flex">
         <% @items.each do |item| %>
-        <div class="mx-4">
+        <div class="mx-3">
         <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: "no_image.jpg" %>
         <br><%= link_to item_path(item.id) do %><%= item.name %><% end %>
         <br>￥<%= item.price %>
