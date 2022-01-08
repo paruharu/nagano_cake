@@ -23,7 +23,7 @@ class Public::CustomersController < ApplicationController
   def unsubscribe
   end
 
-  def withdraw
+  def withdraw  
     @customer = current_customer
     @customer.update(is_active: true)
     reset_session

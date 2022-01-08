@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
 
 
+
   scope module: :public do
     resource :customers, except: [:show, :create]
     resources :items, only: [:index, :show]
@@ -37,8 +38,6 @@ Rails.application.routes.draw do
     get "/customers/unsubscribe" => "customers#unsubscribe"
     patch "/customers/withdraw" => "customers#withdraw"
 
-
-
   end
 
   devise_for :customers, controllers: {
@@ -48,3 +47,4 @@ Rails.application.routes.draw do
   }
 
 end
+
